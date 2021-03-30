@@ -1,0 +1,50 @@
+# FAC: TRABALHO 01
+	.text
+
+main:	
+	li $v0, 5	# load appropriate system call code into register $v0;
+			# code for reading integer is 5
+	syscall		# call operating system to perform operation
+	move $a0, $v0	# O PRIMEIRO VALOR LIDO DO TECLADO ESTA DISPONIVEL EM $A0
+	li $v0, 5	# load appropriate system call code into register $v0;
+			# code for reading integer is 5
+	syscall		# call operating system to perform operation
+	move $a1, $v0	# O SEGUNDO VALOR LIDO DO TECLADO ESTA DISPONIVEL EM $A1
+      
+# =================== IMPLEMENTE AQUI SUA SOLUCAO: INICIO
+
+	move $t0, $a0
+	move $t1, $a1		# os valores de entrada estarao em t0 e t1
+	
+	add $a0, $t0, $t1 	# a soma estara em a0
+	
+# =================== IMPLEMENTE AQUI SUA SOLUCAO: FIM      
+
+				# a rotina de impressao espera parametro de entrada em a0
+				
+      jal  print            # call print routine. 
+
+exit:      
+		
+#########  routine to print messages
+
+            .data
+space:		.asciiz  " "          # space
+new_line:	.asciiz  "\n"         # newline
+cabecalho:	.asciiz  "resultado: "
+string_MMC:	.asciiz  "\nMMC: "
+
+            .text
+print:	
+	move   $t0, $a0      	# saving parameters
+	      	
+      	move   $a0, $t0      	# 
+	li   $v0, 1           	# specify Print Integer service
+      	syscall               	# print $t0
+      	
+	la   $a0, new_line   	# load address of print heading
+      	li   $v0, 4           	# specify Print String service
+      	syscall               	# print new_line
+
+	jr   $ra              	# return
+	

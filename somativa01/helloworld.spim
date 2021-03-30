@@ -1,0 +1,17 @@
+.data
+ 	message: .asciiz "Ola Mundo"		# Mensagem a ser imprimida
+ 	new_line: .asciiz "\n"			# Quebra de linha
+ 	
+.text
+
+main:
+	li $v0, 4				# Carrega código de impressão de uma string
+	la $a0, message				# Imprime mensagem em message
+	syscall
+	
+	li $v0, 4				# Carrega código de impressão de uma string
+	la $a0, new_line				# Imprime mensagem em message
+	syscall
+	
+	li $v0, 10				# Carrega o código de saída do programa	
+	syscall

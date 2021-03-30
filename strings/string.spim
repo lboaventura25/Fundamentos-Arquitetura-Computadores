@@ -1,0 +1,36 @@
+	.data
+	
+gabarito: 	.space 10000 
+entrada: 	.space 10000 
+str1: 	.asciiz "Digite uma string: "
+str2: 	.asciiz "String digitada:\n"
+nl: 	.asciiz "\n"
+
+	.text
+	
+main:
+	li $v0, 5	# Carrega o código de leitura de um inteiro no $v0
+	la $a0, entrada	# Imprime o inteiro
+	syscall		# Chama a syscall
+	
+	move $a1, $v0 	# Move $v0 para $a1
+	
+	li $v0, 4	# Carrega o código de impressão de uma string no $v0
+	la $a0, str1	# Imprime a string str1
+	syscall		# Chama a syscall
+	
+	li $v0, 8	# Carrega o código de leitura de uma strng no $v0
+	la $a0, str	# Carrega o endereço base da string que será lida no $a0
+	li $a1, 20	# Carrega o tamanho da string no $a1
+	syscall		# Chama a syscall
+	
+	li $v0, 4	# Carrega o código de impressão de uma string no $v0
+	la $a0, str2	# Imprime a string str2
+	syscall		# Chama a syscall
+	
+	li $v0, 4	# Carrega o código de impressão de uma string no $v0
+	la $a0, str	# Imprime a string lida em str
+	syscall		# Chama a syscall
+	
+	li $v0, 10	# Encerra o programa
+	syscall

@@ -1,0 +1,10 @@
+	.text
+	
+main:
+	
+	lw $a0, 0($sp) 
+	lw $ra, 4($sp) 
+	addi $sp, $sp, 8
+	
+	li $v0, 10	# Encerra o programa
+	syscall

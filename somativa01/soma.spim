@@ -1,0 +1,26 @@
+.data
+	new_line: .asciiz "\n"
+
+.text
+
+main:
+	li $v0, 5		# Carrega o código de leitura de inteiro
+	syscall
+	move $t0, $v0		# Move o primeiro inteiro lido para $t0
+	
+	li $v0, 5		# Carrega o código de leitura de inteiro
+	syscall
+	move $t1, $v0		# Move o segundo inteiro lido para $t1
+	
+	add $a0, $t1, $t0	# Soma $t0 com $t1 e coloca o resultado em $a0
+	
+	li $v0, 1 		# Carrega o código de impressão de inteiro
+	syscall
+	
+	li $v0, 4		# Carrega o código de impressão de uma string
+	la $a0, new_line	# Imprime string new_line
+	syscall
+	
+	li $v0, 10		# Carrega o código de saída do programa	
+	syscall
+	
