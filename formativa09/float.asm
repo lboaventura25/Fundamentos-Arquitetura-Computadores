@@ -21,8 +21,7 @@ main:
 	
 	jal print_positive
 	
-	#print sinal negativo
-	print_signal: jal print_negative
+	#print sinal negativo$f1, zergative
 	
 	mfc1 $t0, $f0
 	srl $t0, $t0, 23
