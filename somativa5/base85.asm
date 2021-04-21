@@ -1,12 +1,13 @@
 .data
-	string: .space 300
-	new_line: .asciiz "\n"
-	invalid: .asciiz "Entrada invalida.\n"
-	base85: .asciiz "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&<>()[]{}@%$#"
+	string: 	.space 		300
+	new_line: 	.asciiz 	"\n"
+	invalid: 	.asciiz  	"Entrada invalida.\n"
+	base85: 	.asciiz    	"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&<>()[]{}@%$#"
+
 	# Aloca 4 espaços para um array de inteiros
-	rest_array: 
-		.align 2 
-		.space 16 
+	rest_array:
+			.align 		2 
+			.space 		16 
 .text
 
 main:
