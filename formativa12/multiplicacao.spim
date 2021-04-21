@@ -1,6 +1,7 @@
 .data 
 	new_line: .asciiz "\n"
-	space: .asciiz " Hi-> "
+	lo: .asciiz "Lo-> "
+	hi: .asciiz "\nHi-> "
 .text
 
 main:
@@ -15,12 +16,16 @@ main:
 	jal multfac
 	
 	# --- Prints
+	li $v0, 4
+	la $a0, lo
+	syscall
+	
 	li $v0, 1
 	mflo $a0
 	syscall
 	
 	li $v0, 4
-	la $a0, space
+	la $a0, hi
 	syscall
 	
 	li $v0, 1
