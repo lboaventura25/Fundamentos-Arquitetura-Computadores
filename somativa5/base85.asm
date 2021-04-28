@@ -6,8 +6,8 @@
 
 	# Aloca 4 espaços para um array de inteiros
 	rest_array:
-			.align 		2 
-			.space 		16 
+			    .align 		2 
+			    .space 		16 
 .text
 
 main:
