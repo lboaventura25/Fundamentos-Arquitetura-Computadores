@@ -109,7 +109,7 @@ main:
 	li $v0, 10
 	syscall
 	
-	continue_6:
+	continue_6: # Testando
 	# ------------- Terminar checagem das condições de entrada
 	
 	beq $t3, 1, nao_primo
