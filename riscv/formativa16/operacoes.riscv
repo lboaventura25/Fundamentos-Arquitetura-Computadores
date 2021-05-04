@@ -1,0 +1,126 @@
+.data
+	new_line: .string "\n"
+	add_text: .string "ADD: "
+	sub_text: .string "SUB: "
+	and_text: .string "AND: "
+	or_text: .string "OR: "
+	xor_text: .string "XOR: "
+	mask_text: .string "MASK: "
+	sll_text: .string "SLL("
+	srl_text: .string "SRL("
+	final_text: .string "): "
+
+.text
+main:
+	
+	# Recebe o inteiro A
+	li a7, 5
+	ecall
+	mv t0, a0
+	
+	# Recebe o inteiro B
+	li a7, 5
+	ecall
+	mv t1, a0
+	
+	# Recebe o inteiro C
+	li a7, 5
+	ecall
+	mv t2, a0
+	
+	# --------------------------- ADD
+	add t4, t0, t1
+	la t3, add_text
+	jal print
+	
+	# --------------------------- SUB
+	sub t4, t0, t1
+	la t3, sub_text
+	jal print
+	
+	# --------------------------- AND
+	and t4, t0, t1
+	la t3, and_text
+	jal print
+	
+	# --------------------------- OR
+	or t4, t0, t1
+	la t3, or_text
+	jal print
+	
+	# --------------------------- XOR
+	xor t4, t0, t1
+	la t3, xor_text
+	jal print
+	
+	# --------------------------- MASK
+	andi t4, t2, 31
+	la t3, mask_text
+	jal print
+	
+	mv t2, t4
+	
+	# --------------------------- SLL(t2)
+	sll t4, t0, t2
+	la t3, sll_text
+	jal print_srl_sll
+	
+	# --------------------------- SRL(t2)
+	srl t4, t1, t2
+	la t3, srl_text
+	jal print_srl_sll
+	
+	# Sai do programa
+	li a0, 0
+	li a7, 93
+	ecall
+	
+
+print:
+	# Print string em t3
+	li a7, 4
+	mv a0, t3
+	ecall
+	
+	# Print inteiro em t4
+	li a7, 1
+	mv a0, t4
+	ecall
+	
+	# Print quebra de linha
+	li a7, 4
+	la a0, new_line
+	ecall
+	
+	jr ra
+	
+print_srl_sll:
+	# Print string em t3 
+	li a7, 4
+	mv a0, t3
+	ecall
+	
+	# Print inteiro em t2
+	li a7, 1
+	mv, a0, t2
+	ecall
+	
+	# Print string em t3
+	li a7, 4
+	la a0, final_text
+	ecall
+	
+	# Print inteiro em t4
+	li a7, 1
+	mv, a0, t4
+	ecall
+	
+	# Print quebra de linha
+	li a7, 4
+	la a0, new_line
+	ecall
+	
+	jr ra
+	
+	
+	
